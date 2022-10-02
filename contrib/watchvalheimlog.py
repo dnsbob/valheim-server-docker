@@ -8,6 +8,7 @@ Watch for shutdown message, and shut down the container and/or server.
 import argparse
 import os
 import subprocess
+import sys
 import time
 import tailhead
 
@@ -44,7 +45,7 @@ def usage(msg=None):
     print("Usage: watchvalehimlog.py <logfile>")
     if msg:
         print(msg)
-        os.exit(1)
+        sys.exit(1)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
