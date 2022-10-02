@@ -7,7 +7,16 @@ usage () {
   exit 1
 }
 
-if [ "X" = "X$2" -o "X" = "X$WORLD_NAME" -o "X" = "X$WORLD_PATH" ]; then
+if [ "X" = "X$1" ]; then
+  echo "backupscript argument required"
+  usage
+
+if [ "X" = "X$WORLD_NAME" ]; then
+  echo "env var WORLD_NAME must be defined"
+  usage
+
+if [ "X" = "X$WORLD_PATH" ]; then
+  echo "env var WORLD_PATH must be defined"
   usage
 fi
 
