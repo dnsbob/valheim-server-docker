@@ -35,10 +35,13 @@ def backup():
 
 def shutdown():
     '''shut down container and/or server'''
-    print('shutdown now',flush=True)
     shutdownhook=os.environ.get('SHUTDOWN_HOOK')
-    result=subprocess.run(shutdownhook)
-    print("shutdown result:",result)    # probably never see this
+    if shutdownhook:
+        print('shutdown now',flush=True)
+        result=subprocess.run(shutdownhook)
+        print("shutdown result:",result)    # probably never see this
+    else:
+        print("shutdown hook not defined")
 
 def usage(msg=None):
     '''print usage and/or error'''
@@ -56,9 +59,11 @@ if __name__ == "__main__":
     backuphook=os.environ.get('POST_BACKUP_HOOK')
     if not backuphook:
         usage("missing env var POST_BACKUP_HOOK")
+    '''
     shutdownhook=os.environ.get('SHUTDOWN_HOOK')
     if not shutdownhook:
         usage("missing env var SHUTDOWN_HOOK")
+    '''
     logfile = args.logfile
     # test logfile
     try:
