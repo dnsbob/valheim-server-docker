@@ -10,7 +10,7 @@ usage () {
 if [ "X" = "X$1" ]; then
   echo "backupscript argument required"
   usage
-
+fi
 if [ "X" != "X$2" ]; then
   WORLD_NAME=$2
 fi
