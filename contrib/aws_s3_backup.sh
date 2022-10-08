@@ -31,4 +31,5 @@ BACKUP_PATH=${BACKUP_PATH%/}
 destination="s3://$BACKUP_BUCKET/$BACKUP_PATH/$(basename "$backup_file")"
 
 echo "Using aws s3 cp to copy $backup_file to $destination"
-timeout 300 aws s3 cp "${scp_args[@]}" "$backup_file" "$destination"
+#timeout 300 aws s3 cp "$backup_file" "$destination"
+aws s3 cp "$backup_file" "$destination"
