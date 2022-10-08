@@ -43,5 +43,10 @@ fi
 cd "${worldpath}"
 zip $tmpdir/backup.zip "${worldname}.db" "${worldname}.fwl"
 cd "${mydir}"
-$backupscript $tmpdir/backup.zip || echo "failed to backup" && exit 1
+$backupscript $tmpdir/backup.zip
+ret=$?
+if [ ! $ret ]; then
+  echo "failed to backup"
+  exit 1
+fi
 echo "$currenttime" > $tmpdir/backuptime
