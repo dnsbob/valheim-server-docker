@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 
-"""watchvalheimlog.py
+"""watchvalheimlog.py  logfile-to-watch
 Watch Valheim log for save messages, and backup the saves.
 Watch for shutdown message, and shut down the container and/or server.
+Needs env vars POST_BACKUP_HOOK  SHUTDOWN_HOOK
 """
 
 import argparse
