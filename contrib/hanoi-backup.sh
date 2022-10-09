@@ -40,6 +40,7 @@ if [ 9 -lt $max ]; then
 fi
 
 basedir=$2
+mkdir -p $basedir
 if [ ! -d "$basedir" ]; then
   usage
 fi
