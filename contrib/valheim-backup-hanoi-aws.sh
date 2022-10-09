@@ -6,13 +6,13 @@ if [ $# -ne 6 ]; then
   exit 1
 fi
 
-WORLD_NAME =$1
+WORLD_NAME=$1
 WORLD_PATH=$2
 max=$3
 basedir=$4
 BACKUP_BUCKET=$5
 BACKUP_PATH=$6
 
-zipfile=`valheim-save-zip.sh echo $WORLD_NAME $WORLD_PATH`
-hanoi-backup.sh $max $basedir $zipfile
-aws_s3_backup_sync.sh $basedir $BACKUP_BUCKET $BACKUP_PATH
+zipfile=`bin/valheim-save-zip.sh echo $WORLD_NAME $WORLD_PATH`
+bin/hanoi-backup.sh $max $basedir $zipfile
+bin/aws_s3_backup_sync.sh $basedir $BACKUP_BUCKET $BACKUP_PATH
