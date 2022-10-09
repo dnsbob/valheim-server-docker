@@ -31,4 +31,4 @@ BACKUP_PATH=${BACKUP_PATH%/}
 destination="s3://$BACKUP_BUCKET/$BACKUP_PATH/$(basename "$backup_dir")"
 
 echo "Using aws s3 sync to sync $backup_dir to $destination"
-aws s3 sync "$backup_dir" "$destination"
+aws s3 sync --delete "$backup_dir" "$destination"
