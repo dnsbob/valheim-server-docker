@@ -13,6 +13,6 @@ basedir=$4
 BACKUP_BUCKET=$5
 BACKUP_PATH=$6
 
-zipfile=`bin/valheim-save-zip.sh echo $WORLD_NAME $WORLD_PATH`
+zipfile=`bin/valheim-save-zip.sh echo $WORLD_NAME $WORLD_PATH | tail -1`
 bin/hanoi-backup.sh $max $basedir $zipfile
 bin/aws_s3_backup_sync.sh $basedir $BACKUP_BUCKET $BACKUP_PATH
