@@ -1,0 +1,9 @@
+# based on https://www.suse.com/support/kb/doc/?id=000019672
+[Unit]
+Description=systemd service unit file for watchvalheimlog.py
+
+[Service]
+ExecStart=/bin/bash /home/ec2-user/valheim-server-docker/contrib/start-watch.sh
+
+[Install]
+WantedBy=multi-user.target
