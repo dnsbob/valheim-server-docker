@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 
-"""watchvalheimlog.py
+"""watchvalheimlog.py  logfile-to-watch
 Watch Valheim log for save messages, and backup the saves.
 Watch for shutdown message, and shut down the container and/or server.
+Needs env vars WATCH_SAVE_HOOK  SHUTDOWN_HOOK
 """
 
 import argparse
@@ -28,7 +29,7 @@ def main(logfile,debug=False):
 def backup():
     '''make a backup'''
     print("make a backup",flush=True)
-    backuphook=os.environ.get('POST_BACKUP_HOOK')
+    backuphook=os.environ.get('WATCH_SAVE_HOOK')
     #backuphook.replace("@BACKUP_FILE@",backupfile)
     result=subprocess.run(backuphook.split())
     print("backup result:",result)
@@ -56,9 +57,9 @@ if __name__ == "__main__":
     parser.add_argument("--debug", "-d")
     args = parser.parse_args()
     # check args
-    backuphook=os.environ.get('POST_BACKUP_HOOK')
+    backuphook=os.environ.get('WATCH_SAVE_HOOK')
     if not backuphook:
-        usage("missing env var POST_BACKUP_HOOK")
+        usage("missing env var WATCH_SAVE_HOOK")
     '''
     shutdownhook=os.environ.get('SHUTDOWN_HOOK')
     if not shutdownhook:
