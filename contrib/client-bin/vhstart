@@ -1,0 +1,2 @@
+i=`aws ec2 describe-instances --query 'Reservations[0].Instances[0].InstanceId' | tr -d '"'`
+date; aws ec2 start-instances --instance-ids $i
