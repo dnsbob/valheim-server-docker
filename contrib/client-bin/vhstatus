@@ -1,0 +1,1 @@
+date; aws ec2 describe-instances --query 'Reservations[*].Instances[*].{Instance:InstanceId,PublicIP:PublicIpAddress,State:State.Name}' --output json

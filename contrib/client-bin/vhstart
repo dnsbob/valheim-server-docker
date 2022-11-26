@@ -1,0 +1,4 @@
+list=`aws ec2 describe-instances --query 'Reservations[*].Instances[*].{Instance:InstanceId,Tags:Tags[*],PublicIP:PublicIpAddress,State:State.Name}' --output json`
+short=`awk '/Key/ && /Name/ {n="yes";v=""} /Value/ {v=$2} /Instance/ {i=$2} n == "yes" && v != "" && i != "" {print v,i;exit}' <<< "$list"`
+i=`awk "/$VALHEIM_AWS_SERVER_NAME_TAG/"' {print $2}' <<< "$short" | tr -d '",'`
+date; aws ec2 start-instances --instance-ids $i
