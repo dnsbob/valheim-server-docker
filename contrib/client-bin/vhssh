@@ -1,2 +1,2 @@
-ip=`aws ec2 describe-instances | awk '/PublicIpAddress/ {print $2}' | tr -d ',",' `; echo $ip
+ip=`aws ec2 describe-instances | awk '/PublicIpAddress/ {print $2}' | tr -d ',",' `
 ssh -o StrictHostKeyChecking=no -i ~/.ssh/dnsbobaws.pem ec2-user@$ip "$@"
