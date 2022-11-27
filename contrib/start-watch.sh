@@ -1,7 +1,7 @@
 #!/bin/bash
 # start-watch.sh
 
-log=/tmp/$0.log
+log=/tmp/watchvalheimlog.log
 echo "`date` $0 started" >> $log
 
 export BACKUP_BUCKET=dnsbob-valheim
