@@ -11,4 +11,13 @@ export WORLD_PATH=/root/valheim-server/config/worlds_local
 export HANOI_BASE=/root/valheim-server/hanoi
 export BACKUP_SCRIPT=/home/ec2-user/valheim-server-docker/contrib/valheim-backup-hanoi-aws.sh
 export WATCH_SAVE_HOOK="$BACKUP_SCRIPT $WORLD_NAME $WORLD_PATH 6 $HANOI_BASE $BACKUP_BUCKET $BACKUP_PATH"
+
+# wait for valheim server to start, otherwise it looks at the old log file
+while true
+do
+  a=`pgrep valheim_server`
+  if [ "X" != "X$a" ]; then break
+  sleep 5
+done
+
 /home/ec2-user/valheim-server-docker/contrib/watchvalheimlog.py /root/valheim-server/log/supervisor/valheim-server-stdout---supervisor-*.log 2>&1 >> $log

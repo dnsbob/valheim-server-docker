@@ -31,6 +31,7 @@ def backup():
     print("make a backup",flush=True)
     backuphook=os.environ.get('WATCH_SAVE_HOOK')
     #backuphook.replace("@BACKUP_FILE@",backupfile)
+    print("backup hook %s" % (backuphook))
     result=subprocess.run(backuphook.split())
     print("backup result:",result)
 
@@ -75,4 +76,5 @@ if __name__ == "__main__":
     debug = args.debug
     if debug:
         print("debug enabled",flush=True)
+    print("watchvalheimlog.py starting, file %s" % (logfile))
     main(logfile,debug=debug)
