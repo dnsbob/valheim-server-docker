@@ -16,7 +16,7 @@ export WATCH_SAVE_HOOK="$BACKUP_SCRIPT $WORLD_NAME $WORLD_PATH 6 $HANOI_BASE $BA
 while true
 do
   a=`pgrep valheim_server`
-  if [ "X" != "X$a" ]; then break
+  if [ "X" != "X$a" ]; then break; fi
   sleep 5
 done
 
