@@ -18,6 +18,11 @@
 # e.g. /config/backups/
 backup_dir=$1
 
+if [ -n "$3" ]; then
+  BACKUP_BUCKET="$2"
+  BACKUP_PATH="$3"
+fi
+
 : "${BACKUP_BUCKET:=}" "${BACKUP_PATH:=}"
 
 if [ -z "$BACKUP_BUCKET" ] || [ -z "$BACKUP_PATH" ]; then
