@@ -31,9 +31,9 @@ def backup():
     print("make a backup",flush=True)
     backuphook=os.environ.get('WATCH_SAVE_HOOK')
     #backuphook.replace("@BACKUP_FILE@",backupfile)
-    print("backup hook %s" % (backuphook))
+    print("backup hook %s" % (backuphook),flush=True)
     result=subprocess.run(backuphook.split())
-    print("backup result:",result)
+    print("backup result:",result,flush=True)
 
 def shutdown():
     '''shut down container and/or server'''
@@ -41,15 +41,15 @@ def shutdown():
     if shutdownhook:
         print('shutdown now',flush=True)
         result=subprocess.run(shutdownhook)
-        print("shutdown result:",result)    # probably never see this
+        print("shutdown result:",result,flush=True)    # probably never see this
     else:
-        print("shutdown hook not defined")
+        print("shutdown hook not defined",flush=True)
 
 def usage(msg=None):
     '''print usage and/or error'''
-    print("Usage: watchvalehimlog.py <logfile>")
+    print("Usage: watchvalehimlog.py <logfile>",flush=True)
     if msg:
-        print(msg)
+        print(msg,flush=True)
         sys.exit(1)
 
 if __name__ == "__main__":
@@ -76,5 +76,5 @@ if __name__ == "__main__":
     debug = args.debug
     if debug:
         print("debug enabled",flush=True)
-    print("watchvalheimlog.py starting, file %s" % (logfile))
+    print("watchvalheimlog.py starting, file %s" % (logfile),flush=True)
     main(logfile,debug=debug)
