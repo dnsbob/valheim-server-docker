@@ -77,4 +77,5 @@ if __name__ == "__main__":
     if debug:
         print("debug enabled",flush=True)
     print("watchvalheimlog.py starting, file %s" % (logfile),flush=True)
+    print("backuphook", backuphook, flush=True)
     main(logfile,debug=debug)
