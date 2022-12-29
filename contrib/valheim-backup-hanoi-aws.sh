@@ -13,7 +13,7 @@ basedir=${4:-NONE}
 BACKUP_BUCKET=${5:-NONE}
 BACKUP_PATH=${6:-NONE}
 
-echo "world=${WORLD_PATH}/${WORLD_NAME} max=$max basedir=$basedir bucket=${BACKUP_BUCKET} path=$BACKUP_PATH" >> /tmp/$0.log
+echo "world=${WORLD_PATH}/${WORLD_NAME} max=$max basedir=$basedir bucket=${BACKUP_BUCKET} path=$BACKUP_PATH" >> /tmp/${0##*/}.log
 
 zipfile=`bin/valheim-save-zip.sh echo $WORLD_NAME $WORLD_PATH | tail -1`
 bin/hanoi-backup.sh $max $basedir $zipfile
