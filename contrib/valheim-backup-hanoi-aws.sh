@@ -6,12 +6,12 @@ if [ $# -ne 6 ]; then
   exit 1
 fi
 
-WORLD_NAME=$1
-WORLD_PATH=$2
-max=$3
-basedir=$4
-BACKUP_BUCKET=$5
-BACKUP_PATH=$6
+WORLD_NAME=${1:-NONE}
+WORLD_PATH=${2:-NONE}
+max=${3:-NONE}
+basedir=${4:-NONE}
+BACKUP_BUCKET=${5:-NONE}
+BACKUP_PATH=${6:-NONE}
 
 echo "world=${WORLD_PATH}/${WORLD_NAME} max=$max basedir=$basedir bucket=${BACKUP_BUCKET} path=$BACKUP_PATH" >> /tmp/$0.log
 
